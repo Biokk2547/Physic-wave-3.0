@@ -1,0 +1,84 @@
+def wave_speed(wavelength, frequency):
+  """
+  คำนวณความเร็วของคลื่น
+
+  :param wavelength: ความยาวคลื่น (เมตร)
+  :param frequency: ความถี่ของคลื่น (เฮิร์ตซ์)
+  :return: ความเร็วของคลื่น (เมตรต่อวินาที)
+  """
+  speed = round(wavelength * frequency, 2)
+  return speed
+
+wavelength_unit = input("หน่วยของความยาวคลื่น (m, cm, mm): ").strip().lower()
+wavelength_value = round(float(input("ความยาวคลื่น: ")), 2)
+
+if wavelength_unit == "cm":
+  wavelength_value /= 10**2
+elif wavelength_unit == "mm":
+  wavelength_value /= 10*3
+
+frequency_unit = input("หน่วยของความถี่ของคลื่น (Hz, kHz, MHz): ").strip().lower()
+frequency_value = round(float(input("ความถี่ของคลื่น: ")), 2)
+
+if frequency_unit == "khz":
+  frequency_value *= 10**3
+elif frequency_unit == "mhz":
+  frequency_value *= 10**5
+
+
+
+if wavelength_value == 0:
+  print("คำนวณความยาวคลื่นจากความเร็วและความถี่")
+  wavelength_value = round(wave_speed(wavelength_value, frequency_value), 2)
+
+print("ความยาวคลื่น:", wavelength_value, "เมตร")
+
+speed_of_wave = wave_speed(wavelength_value, frequency_value)
+speed_of_wave=round((wavelength_value*frequency_value), 2)
+print("ความเร็วคลื่น:",speed_of_wave,"เมตรต่อวินาที")
+
+T = round((wavelength_value / speed_of_wave), 3)
+
+
+if speed_of_wave == 0:
+  print("ไม่สามารถคำนวณคาบของคลื่นได้ เนื่องจากความเร็วของคลื่นเป็นศูนย์")
+else:
+  T = round((wavelength_value / speed_of_wave), 3)
+  print("คาบของคลื่น:", T, "วินาทีต่อรอบ")
+
+
+
+if T >= 5:
+  print("ช้ามากไอน้อง")
+elif T < 5:
+  print("ข้าคือความเร็ว")
+else:
+  print("ลิงจริงกุว่าไม่ใช่ละ")
+
+reflection_angle = round(float(input("มุมตกกระทบ (องศา): ")), 2)
+print("มุมสะท้อน:", reflection_angle, "องศา")
+
+t = float(input("อุณหภูมิ"))
+wave_sound_speed =round((331+(t*0.6)), 2)
+print("ความเร็วเสียงในอากาศ:",wave_sound_speed,"เมตรต่อวินาที")
+
+import math
+
+# คำนวณค่า sin, cos, และ tan ของมุม 
+
+angle_deg = float(input("มุมเงยมองเครื่องบิน:"))
+
+sin_value = math.sin(math.radians(angle_deg))
+cos_value = math.cos(math.radians(angle_deg))
+tan_value = math.tan(math.radians(angle_deg))
+
+
+#ความเร็วเครื่องบิน
+
+Vs=round((wave_sound_speed/sin_value), 3)
+print("ความเร็วเครื่องบิน:",Vs,"เมตรต่อวินาที")
+if Vs >= 200 :
+  print("เร็วมากๆเลยพี่")
+else :
+  print("ช้าฝุด")
+  
